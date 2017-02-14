@@ -12,7 +12,7 @@ defmodule Event.Schema.Event do
   def build(params) do
     Event.Schema.Event.changeset(%Event.Schema.Event{}, params)
   end
-    
+
 
   def changeset(event, params \\ []) do
     event
