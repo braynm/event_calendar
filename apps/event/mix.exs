@@ -11,7 +11,8 @@ defmodule Event.Mixfile do
      elixir: "~> 1.4",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     deps: deps()]
+     deps: deps(),
+     aliases: aliases()]
   end
 
   # Configuration for the OTP application
@@ -41,5 +42,12 @@ defmodule Event.Mixfile do
      {:postgrex, "~> 0.11"},
      {:comeonin, "~> 2.5"}
     ]
+  end
+
+  defp aliases do
+    ["ecto.setup": ["ecto.create", "ecto.migrate"],
+    # "ecto.seed": ["run apps/event/priv/repo/seeds.exs"],
+    "ecto.reset": ["ecto.drop", "ecto.setup"],
+    "test": ["ecto.reset --quiet", "test"]]
   end
 end

@@ -5,7 +5,9 @@ defmodule EventCalendar.Mixfile do
     [apps_path: "apps",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     deps: deps()]
+     deps: deps(),
+     aliases: aliases(),
+    ]
   end
 
   # Dependencies can be Hex packages:
@@ -21,6 +23,16 @@ defmodule EventCalendar.Mixfile do
   # Dependencies listed here are available only for this project
   # and cannot be accessed from applications inside the apps folder
   defp deps do
-    []
+    [{:ecto, "~> 2.0"},
+     {:postgrex, "~> 0.11"},
+     {:comeonin, "~> 2.5"}
+    ]
+  end
+
+  defp aliases do
+    ["ecto.setup": ["ecto.create", "ecto.migrate"], #"ecto.seed"],
+    "ecto.seed": ["run apps/event/priv/repo/seeds.exs"],
+    "ecto.reset": ["ecto.drop", "ecto.setup"],
+    "test": ["ecto.reset --quiet", "test"]]
   end
 end
