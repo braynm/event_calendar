@@ -15,7 +15,7 @@ defmodule Event.Schema.UserTest do
     assert user.valid? == false
     assert Keyword.get(user.errors, :email) == {"can't be blank", [validation: :required]}
   end
-  
+
   test "correct password encryption" do
     user = User.build(@params)
     assert Comeonin.Bcrypt.checkpw(@params.password, user.changes.password_encrypted) == true

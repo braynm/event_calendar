@@ -1,18 +1,6 @@
 defmodule Event do
-  @moduledoc """
-  Documentation for Event.
-  """
+  alias Event.Repo
+  alias Event.Schema.User
+  alias Event.Schema.Event, [as: EventSchema]
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Event.hello
-      :world
-
-  """
-  def hello do
-    :world
-  end
 end
